@@ -9,7 +9,6 @@ class CreateTables < ActiveRecord::Migration
     end
 
       create_table :movies do |t|
-      # Your code goes here
       t.string :title
       t.string :director
       t.string :studio
@@ -18,6 +17,17 @@ class CreateTables < ActiveRecord::Migration
       t.text :synopsis
       t.timestamps
     end
+    
+     create_table :reviews do |t|
+      t.string :username
+      t.integer :rating
+      t.string :review_title
+      t.text :review
+      t.datetime :review_date
+      t.text :synopsis
+      t.timestamps
+    end
+
 
   end
 

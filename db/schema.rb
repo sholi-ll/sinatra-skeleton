@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 1) do
     t.datetime "updated_at"
   end
 
+  create_table "reviews", force: true do |t|
+    t.string   "username"
+    t.integer  "rating"
+    t.string   "review_title"
+    t.text     "review"
+    t.datetime "review_date"
+    t.text     "synopsis"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "email"
