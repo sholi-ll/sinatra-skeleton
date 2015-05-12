@@ -21,7 +21,6 @@ ActiveRecord::Schema.define(version: 2) do
     t.text     "synopsis"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
   end
 
   create_table "reviews", force: true do |t|

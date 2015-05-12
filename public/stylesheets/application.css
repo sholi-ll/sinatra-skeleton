@@ -1,0 +1,25 @@
+section {
+  margin-right: 80%;
+  margin-bottom: 5px;
+  padding: 5px;
+  text-align: left;
+  border-style: solid;
+  border-color: black;
+  border-radius: 10px;
+  border-width: 1px;
+}
+
+label {
+  font-family: "Verdana";
+  font-style: italic;
+}
+
+div.submit {
+  text-align: left;
+}
+
+button:hover {
+  background-color: lightblue;
+  border: 0.5px solid;
+  border-radius: 5px;
+  }
