@@ -19,13 +19,17 @@ post '/login' do
 
   user = User.find_by(email: email)
 
-  if user.password == password
-    session[:user_id] = user.id
-    redirect '/'
+  if user
+    if user.password == password
+      session[:user_id] = user.id
+      redirect '/'
+    else
+      redirect '/login'
+    end
   else
     redirect '/login'
-    puts "wrong!"
   end
+
 end
 
 get '/profile' do
@@ -51,12 +55,26 @@ post '/signup' do
   user = User.find_by(email: email)
 
   if user
-    redirect '/signup'
+    redirect '/'
   else
     user = User.create(email: email, password: password)
     session[:user_id] = user.id
     redirect '/'
   end
 end
+
+get '/reviews/new' do
+  erb :new_review
+end
+
+post '/reviews/new' do
+  title = params[:review_title]
+  review = params[:review]
+
+  current_user.reviews.create(review_title: title, review: review)
+
+end
+
+
 
 
