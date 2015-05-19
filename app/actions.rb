@@ -67,13 +67,25 @@ get '/reviews/new' do
   erb :new_review
 end
 
-post '/reviews/new' do
+post '/reviews/create' do
   title = params[:review_title]
   review = params[:review]
+  rating = params[:rating]
+  synopsis = params[:synopsis]
+  review_date = Time.now.strftime("Printed on %m/%d/%Y")
 
-  current_user.reviews.create(review_title: title, review: review)
 
+  new_review = current_user.reviews.create(review_title: title, review: review, review_date: review_date, rating: rating)
+
+  redirect "/reviews/#{new_review.id}"
 end
+
+get '/reviews/:id' do
+ @review = Review.find(params[:id])
+ erb :reviews
+end
+
+
 
 
 
