@@ -1,6 +1,10 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
+group :production do
+  gem 'pg'
+end
+
 gem 'rake'
 gem 'activesupport'
 
