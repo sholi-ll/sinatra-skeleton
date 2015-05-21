@@ -1,3 +1,11 @@
 <h1>Home Page</h1>
 
 <%= session[:user_id] %>
+
+<section id="review-container">
+    <% @reviews.each do |x| %>
+      <div class= "review">
+        <h2><%= x.review_title %><h2>
+      </div>
+    <% end %>
+</section>

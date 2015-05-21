@@ -4,8 +4,13 @@ helpers do
   end
 end
 
+before do
+  redirect '/login' if !current_user && request.path != '/login' && request.path != '/signup'  
+end
+
 # Homepage (Root path)
 get '/' do
+  @reviews = Review.all
   erb :index
 end
 
@@ -41,7 +46,8 @@ post '/profile' do
 end
 
 get '/logout' do
-  erb :logout
+  session[:user_id] = nil
+  redirect '/'
 end
 
 get '/signup' do
@@ -72,7 +78,7 @@ post '/reviews/create' do
   review = params[:review]
   rating = params[:rating]
   synopsis = params[:synopsis]
-  review_date = Time.now.strftime("Printed on %m/%d/%Y")
+  review_date = Time.now.strftime("Reviewed on %m/%d/%Y")
 
 
   new_review = current_user.reviews.create(review_title: title, review: review, review_date: review_date, rating: rating)
